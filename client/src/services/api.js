@@ -38,12 +38,8 @@ export const findSimilarProducts = async (imageFile) => {
     },
   });
 
-  return response.data;
-};
-
-export const getProducts = async () => {
-  const response = await api.get('/products');
-  return response.data;
+  // Extract the similar products from the response
+  return response.data.similarProducts || response.data;
 };
 
 export default api;
