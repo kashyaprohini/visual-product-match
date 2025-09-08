@@ -79,7 +79,7 @@ npm install
 Create a `.env` file in the `server` directory:
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/visual-product-matcher
+MONGODB_URI=MONGO_UI
 NODE_ENV=development
 ```
 
@@ -214,13 +214,6 @@ This project is licensed under the MIT License.
      - `NODE_ENV`: `production`
      - `PORT`: `5000` (or leave empty for auto-assignment)
 
-### Frontend Deployment (Vercel)
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in the project root
-3. Set environment variables in Vercel dashboard:
-   - `VITE_API_URL`: Your Render backend URL (e.g., `https://your-app.onrender.com/api`)
-
 ### Environment Variables Setup
 
 **Server (.env)**:
@@ -228,11 +221,6 @@ This project is licensed under the MIT License.
 PORT=5000
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/visual-product-matcher
 NODE_ENV=production
-```
-
-**Client (.env.production)**:
-```env
-VITE_API_URL=https://your-backend-app.onrender.com/api
 ```
 
 ## �🐛 Troubleshooting
