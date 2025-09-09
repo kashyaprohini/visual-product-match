@@ -50,9 +50,9 @@ function App() {
     }
   };
 
-  // Filter results based on similarity score
+  // Filter results based on similarity score (using new simplified schema)
   const filteredResults = results.filter(product => 
-    (product.similarity_score || 0) <= maxSimilarityScore
+    (product.similarityScore || 0) >= (100 - maxSimilarityScore)
   );
 
   return (
@@ -129,7 +129,7 @@ function App() {
                 maxScore={maxSimilarityScore}
                 onScoreChange={setMaxSimilarityScore}
                 totalResults={results.length}
-                filteredCount={filteredResults.length}
+                filteredResults={filteredResults.length}
               />
               
               <ResultsList 
