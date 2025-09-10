@@ -32,7 +32,7 @@ export const findSimilarProducts = async (imageFile) => {
   const formData = new FormData();
   formData.append('image', imageFile);
 
-  const response = await api.post('/products/find-similar', formData, {
+  const response = await api.post('api/products/find-similar', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
