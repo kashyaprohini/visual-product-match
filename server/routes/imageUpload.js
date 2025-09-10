@@ -50,19 +50,16 @@ router.post('/products/find-similar', upload.single('image'), async (req, res) =
 
     console.log('Generated', similarProducts.length, 'similar products');
 
-    // Format the response
+    // Format the response - Clean schema without redundant fields
     const formattedResults = similarProducts.map((product, index) => ({
-      _id: `web-search-${Date.now()}-${index}`,
+      _id: `ai-search-${Date.now()}-${index}`,
       name: product.name,
       category: analysisResult.analysis.category,
-      imageUrl: product.imageUrl,
       productUrl: product.productUrl,
       price: product.price,
       source: product.source,
       description: product.description,
-      similarityScore: product.similarityScore,
-      // Keep old format for backward compatibility
-      similarity_score: 100 - product.similarityScore // Invert so lower is better (like old system)
+      similarityScore: product.similarityScore
     }));
 
     console.log('Returning', formattedResults.length, 'formatted results');

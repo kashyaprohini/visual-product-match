@@ -184,10 +184,9 @@ Make 5 products with varied prices ($15-$99), different stores (Amazon, Target, 
       if (jsonMatch) {
         const generatedData = JSON.parse(jsonMatch[0]);
         if (generatedData.products && Array.isArray(generatedData.products)) {
-          // Add working image URLs and product URLs to AI-generated results
+          // Add working product URLs to AI-generated results (remove images)
           const productsWithUrls = generatedData.products.map((product, index) => ({
             ...product,
-            imageUrl: `https://picsum.photos/400/400?random=${Date.now() + index}`,
             productUrl: product.source?.toLowerCase().includes('amazon') 
               ? `https://www.amazon.com/s?k=${encodeURIComponent(product.name)}`
               : product.source?.toLowerCase().includes('target')
@@ -225,11 +224,10 @@ function generateFallbackResults(imageAnalysis) {
   const category = imageAnalysis.category?.toLowerCase() || 'product';
   const productName = imageAnalysis.productName || 'Similar Product';
   
-  // Using working placeholder images and real e-commerce URLs
+  // Clean product results without images, focusing on search functionality
   const mockProducts = [
     {
       name: `${productName} - Premium Edition`,
-      imageUrl: 'https://picsum.photos/400/400?random=1',
       productUrl: 'https://www.amazon.com/s?k=' + encodeURIComponent(productName),
       price: '$29.99',
       source: 'Amazon',
@@ -238,7 +236,6 @@ function generateFallbackResults(imageAnalysis) {
     },
     {
       name: `${productName} - Classic Style`,
-      imageUrl: 'https://picsum.photos/400/400?random=2',
       productUrl: 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(productName),
       price: '$34.99',
       source: 'eBay',
@@ -247,7 +244,6 @@ function generateFallbackResults(imageAnalysis) {
     },
     {
       name: `${productName} - Modern Design`,
-      imageUrl: 'https://picsum.photos/400/400?random=3',
       productUrl: 'https://www.target.com/s?searchTerm=' + encodeURIComponent(productName),
       price: '$39.99',
       source: 'Target',
@@ -256,7 +252,6 @@ function generateFallbackResults(imageAnalysis) {
     },
     {
       name: `${productName} - Deluxe Version`,
-      imageUrl: 'https://picsum.photos/400/400?random=4',
       productUrl: 'https://www.walmart.com/search?q=' + encodeURIComponent(productName),
       price: '$24.99',
       source: 'Walmart',
@@ -265,7 +260,6 @@ function generateFallbackResults(imageAnalysis) {
     },
     {
       name: `${productName} - Professional Grade`,
-      imageUrl: 'https://picsum.photos/400/400?random=5',
       productUrl: 'https://www.bestbuy.com/site/searchpage.jsp?st=' + encodeURIComponent(productName),
       price: '$49.99',
       source: 'Best Buy',
