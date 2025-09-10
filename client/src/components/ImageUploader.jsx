@@ -63,16 +63,16 @@ const ImageUploader = ({ onImageUpload, isLoading }) => {
   };
 
   return (
-    <div className="card p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-4">Upload Product Image</h2>
+    <div className="card p-6 bg-gray-900 text-gray-100">
+      <h2 className="text-xl font-semibold text-white mb-4">Upload Product Image</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* File Upload Area */}
         <div
           className={`relative border-2 border-dashed rounded-lg p-8 transition-colors ${
             dragActive
-              ? 'border-primary-400 bg-primary-50'
-              : 'border-gray-300 hover:border-primary-400'
+              ? 'border-blue-400 bg-gray-800'
+              : 'border-gray-700 hover:border-blue-400 bg-gray-900'
           }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
@@ -93,7 +93,7 @@ const ImageUploader = ({ onImageUpload, isLoading }) => {
               <img
                 src={previewUrl}
                 alt="Preview"
-                className="mx-auto max-h-64 rounded-lg shadow-md"
+                className="mx-auto max-h-64 rounded-lg shadow-lg"
               />
               <button
                 type="button"
@@ -106,20 +106,20 @@ const ImageUploader = ({ onImageUpload, isLoading }) => {
             </div>
           ) : (
             <div className="text-center">
-              <Image className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+              <Image className="mx-auto h-12 w-12 text-blue-400 mb-4" />
               <div className="space-y-2">
-                <p className="text-lg font-medium text-gray-900">
+                <p className="text-lg font-medium text-gray-100">
                   Drop your image here, or{' '}
                   <button
                     type="button"
                     onClick={openFileDialog}
-                    className="text-primary-600 hover:text-primary-700 font-semibold"
+                    className="text-blue-400 hover:text-blue-300 font-semibold"
                     disabled={isLoading}
                   >
                     browse
                   </button>
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-400">
                   Supports: JPG, JPEG, PNG, GIF (Max 10MB)
                 </p>
               </div>
@@ -141,11 +141,11 @@ const ImageUploader = ({ onImageUpload, isLoading }) => {
       </form>
 
       {selectedImage && (
-        <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-          <p className="text-sm text-gray-600">
+        <div className="mt-4 p-3 bg-gray-800 rounded-lg shadow-md">
+          <p className="text-sm text-gray-200">
             <span className="font-medium">Selected file:</span> {selectedImage.name}
           </p>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-200">
             <span className="font-medium">Size:</span> {(selectedImage.size / 1024 / 1024).toFixed(2)} MB
           </p>
         </div>
